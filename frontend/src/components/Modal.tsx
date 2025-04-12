@@ -55,6 +55,7 @@ function Modal({ modalValue, addTaskValue }: any) {
                 return;
             }
             const newTask = { taskName, text, date, status, category, storedUserId, file };
+            console.log(newTask)
             addTaskValue(newTask); 
             setTaskName('')
             setText('')
