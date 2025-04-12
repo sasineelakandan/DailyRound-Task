@@ -144,23 +144,7 @@ function Modal({ modalValue, addTaskValue }: any) {
                     </div>
 
                     {/* Attachment */}
-                    <div className="flex flex-col gap-2">
-                        <span className="text-sm text-gray-700">Attachment</span>
-                        <div
-                            className="w-full h-10 border-2 border-gray-500 bg-gray-100 flex items-center justify-center cursor-pointer"
-                            onClick={() => document.getElementById("fileInput")?.click()}
-                        >
-                            <input
-                                type="file"
-                                id="fileInput"
-                                className="hidden"
-                                onChange={(e: any) => setFile(e.target.files[0])}
-                            />
-                            <span className="text-gray-500">
-                                Drop your files here or upload
-                            </span>
-                        </div>
-                    </div>
+                  
 
                     {/* Buttons */}
                     <div className="flex justify-end gap-4 mt-4">

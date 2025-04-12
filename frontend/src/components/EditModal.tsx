@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import { FaBold, FaItalic, FaListOl, FaListUl, FaTimes } from "react-icons/fa";
 import { editTasks, singleUsertask } from "../services/taskService";
 import { Task } from "../types";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
 
 function EditModal({ modalValue, editValue, setTasksValue, setOriginalTasks }: any) {
-    const [loading, setLoading] = useState(false);
+    
 
     const storedUserId = localStorage.getItem("userId");
     const [taskName, setTaskName] = useState("");
     const [text, setText] = useState("");
-    const [file, setFile] = useState<string | null>(null);
+    
     const [editImage, setEditImage] = useState<string | null>(null);
     const [category, setCategory] = useState("");
     const [date, setDate] = useState("");
@@ -29,7 +29,7 @@ function EditModal({ modalValue, editValue, setTasksValue, setOriginalTasks }: a
             setDate(response.dueDate || "");
             setStatus(response.status || "");
             const attachment = response.attachments?.[0] || null;
-            setFile(attachment);
+           
             setEditImage(attachment);
             // setHistory(response.history || "");
         })();
@@ -38,7 +38,7 @@ function EditModal({ modalValue, editValue, setTasksValue, setOriginalTasks }: a
     const closeModal = () => {
         setTaskName("");
         setText("");
-        setFile(null);
+        
         setEditImage(null);
         setCategory("");
         setDate("");
@@ -47,26 +47,9 @@ function EditModal({ modalValue, editValue, setTasksValue, setOriginalTasks }: a
         modalValue(false);
     };
 
-    const handleFileUpload = async (e: any) => {
-        const uploadedFile = e.target.files[0];
-        if (uploadedFile) {
-            setLoading(true);
-            const filePreview = URL.createObjectURL(uploadedFile);
-            setFile(filePreview);
+   
 
-            const storage = getStorage();
-            const storageRef = ref(storage, `tasks/${Date.now()}_${uploadedFile.name}`);
-            const uploadSnapshot = await uploadBytes(storageRef, uploadedFile);
-            const fileUrl = await getDownloadURL(uploadSnapshot.ref);
-            setEditImage(fileUrl);
-            setLoading(false);
-        }
-    };
-
-    const removeImage = () => {
-        setFile(null);
-        setEditImage(null);
-    };
+    
 
     const validateForm = () => {
         let valid = true;
@@ -211,41 +194,8 @@ function EditModal({ modalValue, editValue, setTasksValue, setOriginalTasks }: a
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <span className="text-sm text-gray-700">Attachment</span>
-                    <div
-                        className="w-full h-10 border-2 border-gray-400 bg-gray-100 flex items-center justify-center cursor-pointer"
-                        onClick={() => document.getElementById("fileInput")?.click()}
-                    >
-                        <input
-                            type="file"
-                            id="fileInput"
-                            className="hidden"
-                            onChange={handleFileUpload}
-                        />
-                        <span className="text-gray-500">Drop your files here or upload</span>
-                    </div>
-                </div>
+               
 
-                {file && (
-                    <div className="relative w-1/4 mt-2">
-                        {loading ? (
-                            <div className="w-full h-full flex items-center justify-center">
-                                <span className="text-gray-500">Loading...</span>
-                            </div>
-                        ) : (
-                            <>
-                                <img src={file} alt="Preview" className="w-full rounded-lg" />
-                                <button
-                                    onClick={removeImage}
-                                    className="absolute top-1 right-1 bg-white p-1 rounded-full shadow"
-                                >
-                                    <FaTimes className="text-red-500" />
-                                </button>
-                            </>
-                        )}
-                    </div>
-                )}
 
                 <button
                     onClick={handleSubmit}
