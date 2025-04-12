@@ -214,25 +214,36 @@ function EditModal({ modalValue, editValue, setTasksValue, setOriginalTasks }: a
                                 <div className="flex items-start gap-1">
                                     <button
                                         onClick={handleCategory}
-                                        value="work"
+                                        value="High"
                                         className={`px-4 py-1 border rounded-full ${category === "work"
                                             ? "bg-[#7B1984] text-white"
                                             : "bg-transparent text-black"
                                             }`}
                                     >
-                                        Work
+                                        High
                                     </button>
 
                                     <button
                                         onClick={handleCategory}
-                                        value="personal"
+                                        value="Medium"
 
                                         className={`px-4 py-1 border rounded-full ${category === "personal"
                                             ? "bg-[#7B1984] text-white"
                                             : "bg-transparent text-black"
                                             }`}
                                     >
-                                        Personal
+                                        Medium
+                                    </button>
+                                    <button
+                                        onClick={handleCategory}
+                                        value="Low"
+
+                                        className={`px-4 py-1 border rounded-full ${category === "personal"
+                                            ? "bg-[#7B1984] text-white"
+                                            : "bg-transparent text-black"
+                                            }`}
+                                    >
+                                        Low
                                     </button>
                                 </div>
                             </div>
