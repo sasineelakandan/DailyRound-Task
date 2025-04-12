@@ -112,8 +112,9 @@ function Home({setAuthenticated}:any) {
             <h1 className="text-gray-500">Filter by:</h1>
             <select onChange={handleFilterCategory} className="border rounded-full px-3 py-1 text-gray-500">
               <option selected disabled value="">Category</option>
-              <option className="bg-[#FFF9F9] text-black hover:bg-[#7B1984] hover:text-white" value="work">Work</option>
-              <option className="bg-[#FFF9F9] text-black hover:bg-[#7B1984] hover:text-white" value="personal">Personal</option>
+              <option className="bg-[#FFF9F9] text-black hover:bg-[#7B1984] hover:text-white" value="High">High</option>
+              <option className="bg-[#FFF9F9] text-black hover:bg-[#7B1984] hover:text-white" value="Medium">Medium</option>
+              <option className="bg-[#FFF9F9] text-black hover:bg-[#7B1984] hover:text-white" value="Low">Low</option>
               <option className="bg-[#FFF9F9] text-black hover:bg-[#7B1984] hover:text-white" value="clearfilter">Clear Filter</option>
             </select>
 

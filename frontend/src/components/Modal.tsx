@@ -111,26 +111,36 @@ function Modal({ modalValue, addTaskValue }: any) {
                                 <div className="flex items-start gap-1">
                                     <button
                                         onClick={handleCategory}
-                                        value="work"
-                                        className={`px-4 py-1 border rounded-full ${category === "work"
+                                        value="High"
+                                        className={`px-4 py-1 border rounded-full ${category === "High"
                                             ? "bg-[#7B1984] text-white"
                                             : "bg-transparent text-black"
                                             }`}
                                     >
-                                        Work
+                                        High
                                     </button>
 
                                     <button
                                         onClick={handleCategory}
-                                        value="personal"
+                                        value="Medium"
 
-                                        className={`px-4 py-1 border rounded-full ${category === "personal"
+                                        className={`px-4 py-1 border rounded-full ${category === "Medium"
                                             ? "bg-[#7B1984] text-white"
                                             : "bg-transparent text-black"
                                             }`}
                                     >
-                                        Personal
+                                        Medium
                                     </button>
+                                    <button
+    onClick={handleCategory}
+    value="Low"
+    className={`px-4 py-1 border rounded-full ${category === "Low"
+        ? "bg-[#7B1984] text-white"
+        : "bg-transparent text-black"
+        }`}
+>
+    Low
+</button>
                                 </div>
                             </div>
 
